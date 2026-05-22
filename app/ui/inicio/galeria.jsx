@@ -179,6 +179,7 @@ export default function Galeria() {
                                 alt="modulari"
                                 width={972}
                                 height={804}
+                                loading="eager"
                                 className="rounded-lg cursor-pointer hover:brightness-40 active:brightness-40"
                                 onClick={() => handleOverlay("/imgs/inicio/galeria/img16.jpg")}
                             />
