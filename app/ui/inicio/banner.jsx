@@ -1,6 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
-import { frank } from "../fonts";
+import { Frank_Ruhl_Libre } from "next/font/google";
+
+const frank = Frank_Ruhl_Libre({
+  subsets: ['latin'],
+  weight: '900'
+})
 
 export default function Banner() {
     return (
