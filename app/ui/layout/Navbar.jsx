@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useState } from "react";
 import MobileMenu from "./MobileMenu";
 import { navlinks } from "../../lib/constants";
+import { Menu } from 'lucide-react';
+import { X } from 'lucide-react';
 
 export default function Navbar() {
 
@@ -20,22 +22,19 @@ export default function Navbar() {
                     width={0}
                     height={0}
                     sizes="50vw"
-                    className="w-40 md:w-50 ml-3 md:ml-5 lg:ml-0"
+                    className="w-40 md:w-50 md:ml-5 lg:ml-0"
                     loading="eager"
                 />
 
                 {/* Menu */}
-                <div className="bg-celeste justify-center p-2 rounded-sm md:hidden flex">
+                <div className="bg-celeste justify-center p-1.5 rounded-sm md:hidden flex">
 
                     <button onClick={() => setIsOpen(!isOpen)}>
-                        <Image
-                            src={isOpen ? '/icons/close.png' : '/icons/menu.png'}
-                            alt={isOpen ? 'close' : 'menu'}
-                            width={0}
-                            height={0}
-                            sizes="6vw"
-                            className="w-7 invert"
-                        />
+                        {isOpen ?
+                            <X color="white" size={26} />
+                            :
+                            <Menu color="white" size={26} />
+                        }
                     </button>
                 </div>
 
