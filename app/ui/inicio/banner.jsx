@@ -1,11 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Frank_Ruhl_Libre } from "next/font/google";
-
-const frank = Frank_Ruhl_Libre({
-  subsets: ['latin'],
-  weight: '900'
-})
 
 export default function Banner() {
     return (
@@ -13,7 +7,9 @@ export default function Banner() {
 
             {/* Texto y botones */}
             <div className="flex flex-col gap-y-4 lg:gap-y-0 justify-around lg:flex-1">
-                <h1 className={`${frank.className} text-5xl lg:text-7xl`}>Tus eventos con el mejor estilo</h1>
+                <h1
+                    style={{ fontFamily: 'var(--font-frank)' }}
+                    className={`text-5xl lg:text-7xl`}>Tus eventos con el mejor estilo</h1>
                 <p className="text-gray-500 text-lg lg:text-2xl">Explora nuestro amplio catálogo de mobiliarios y crea ambientes únicos para cada ocasión.</p>
 
                 <div className="flex flex-col gap-y-2">
@@ -41,6 +37,7 @@ export default function Banner() {
                         src={'/imgs/inicio/img3.jpg'}
                         width={0} height={0}
                         sizes="50vw"
+                        loading="eager"
                         className="w-full h-full object-cover object-[25%_70%] rounded-lg"
                     />
                 </div>

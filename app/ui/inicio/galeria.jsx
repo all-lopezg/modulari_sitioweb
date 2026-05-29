@@ -158,7 +158,7 @@ export default function Galeria() {
                             alt="modulari"
                             width={792}
                             height={806}
-                            className="rounded-lg aspect-video object-cover object-[25%_75%] cursor-pointer hover:brightness-40 active:brightness-40"
+                            className="rounded-lg h-full w-full aspect-video object-cover object-[25%_75%] cursor-pointer hover:brightness-40 active:brightness-40"
                             onClick={() => handleOverlay("/imgs/inicio/galeria/img13.jpg")}
                         />
 

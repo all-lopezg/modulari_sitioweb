@@ -6,17 +6,14 @@ export default function ContactPage() {
         <div className="relative mb-5 mt-5 flex flex-col justify-center mx-4 lg:mx-10">
 
             {/* Imagen */}
-            <div className="lg:w-full lg:h-[80vh]">
-                <Image
-                    src={'/imgs/contacto/contacto.png'}
-                    alt="contacto"
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    className="w-full h-full rounded-lg lg:object-cover"
-                    loading="eager"
-                />
-            </div>
+            <Image
+                src={'/imgs/contacto/contacto.png'}
+                alt="contacto"
+                width={1225}
+                height={825}
+                className="w-full h-full rounded-lg lg:object-cover lg:aspect-video xl:aspect-16/7 2xl:aspect-16/6"
+                loading="eager"
+            />
 
             {/* Form */}
             <div className="bg-white mx-auto xl:ml-15 lg:ml-5 lg:absolute lg:h-fit -translate-y-1/8 lg:translate-y-0 w-[95%] lg:w-fit rounded-lg shadow-[0_0_12px_2px_rgba(0,0,0,0.1)] px-6 py-8 text-center">

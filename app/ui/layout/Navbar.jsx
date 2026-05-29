@@ -4,8 +4,8 @@ import Image from "next/image";
 import { useState } from "react";
 import MobileMenu from "./MobileMenu";
 import { navlinks } from "../../lib/constants";
-import { Menu } from 'lucide-react';
-import { X } from 'lucide-react';
+import { HiOutlineMenu } from "react-icons/hi";
+import { CgClose } from "react-icons/cg";
 
 export default function Navbar() {
 
@@ -27,13 +27,13 @@ export default function Navbar() {
                 />
 
                 {/* Menu */}
-                <div className="bg-celeste justify-center p-1.5 rounded-sm md:hidden flex">
+                <div className="bg-celeste justify-center p-1 rounded-sm md:hidden flex">
 
                     <button onClick={() => setIsOpen(!isOpen)}>
                         {isOpen ?
-                            <X color="white" size={26} />
+                            <CgClose className="text-white size-8" />                            
                             :
-                            <Menu color="white" size={26} />
+                            <HiOutlineMenu className="text-white size-8" />
                         }
                     </button>
                 </div>

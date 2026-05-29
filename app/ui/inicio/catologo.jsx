@@ -2,7 +2,7 @@
 import CatalogoCard from "./catalogo-card"
 import { catalogo } from "@/app/lib/catalogo"
 import { useState, useRef, useEffect, useCallback } from "react"
-import { ChevronRight, ChevronLeft } from 'lucide-react';
+import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 
 export default function Catalogo() {
 
@@ -40,7 +40,7 @@ export default function Catalogo() {
 
     }, [handleCardOpacity])
 
-    {/* Crea una Dot Pagination en base a la cantidad de slides */}
+    {/* Crea una Dot Pagination en base a la cantidad de slides */ }
     const [activeSlide, setActiveSlide] = useState(0)
     const [totalSlides, setTotalSlides] = useState(catalogo.length)
 
@@ -154,7 +154,7 @@ export default function Catalogo() {
         })
     }
 
-    {/* Ejecuta las dos funciones al mismo tiempo al hacer scroll */}
+    {/* Ejecuta las dos funciones al mismo tiempo al hacer scroll */ }
     const onScroll = () => {
         handleCardOpacity()
         handleDotPagination()
@@ -203,17 +203,15 @@ export default function Catalogo() {
                 <button
                     type="button"
                     onClick={() => handleMove('left')}
-                    className="cursor-pointer hover:text-celeste"
                 >
-                    <ChevronLeft size={45} />
+                    <IoIosArrowBack className="cursor-pointer hover:text-celeste size-10" />
                 </button>
 
                 <button
                     type="button"
                     onClick={() => handleMove('right')}
-                    className="cursor-pointer hover:text-celeste"
                 >
-                    <ChevronRight size={45} />
+                    <IoIosArrowForward className="cursor-pointer hover:text-celeste size-10" />
                 </button>
             </div>
 

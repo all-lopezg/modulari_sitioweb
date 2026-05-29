@@ -8,6 +8,10 @@
     font-family: var(--font-gothic);
 }
 
+h1 {
+    font-family: var(--font-frank);
+}
+
 h2 {
     font-family: var(--font-bebas);
 }

@@ -1,6 +1,7 @@
 'use client'
 import { useEffect } from "react"
 import Image from "next/image"
+import { CgClose } from "react-icons/cg";
 
 export default function ImageOverlay({ img, isOpen, setIsOpen }) {
 
@@ -19,11 +20,8 @@ export default function ImageOverlay({ img, isOpen, setIsOpen }) {
                     <div className="absolute inset-0 bg-black/70 backdrop-blur-sm p-8">
 
                         <div className="absolute top-5 lg:top-8 right-5 lg:right-8">
-                            <Image
-                                src={'/icons/close.png'}
-                                alt="close"
-                                width={25} height={25}
-                                className="invert cursor-pointer hover:opacity-70"
+                            <CgClose
+                                className="cursor-pointer hover:opacity-70 text-white size-10 lg:size-12"
                                 onClick={() => setIsOpen(false)}
                             />
                         </div>

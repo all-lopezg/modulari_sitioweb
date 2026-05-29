@@ -1,13 +1,7 @@
-"use client"
-import Image from "next/image"
 import Link from "next/link"
 import { navlinks } from "../../lib/constants"
-
-const sociallinks = [
-    { href: 'https://instagram.com/modulari.cl', src: 'insta.png', alt: 'instagram' },
-    { href: 'https://wa.me/56954015773', src: 'wsp.png', alt: 'whatsapp' },
-    { href: 'mailto:contacto@modulari.cl', src: 'email.png', alt: 'email' },
-]
+import { FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 
 export default function MobileMenu({ isOpen, setIsOpen }) {
 
@@ -34,18 +28,15 @@ export default function MobileMenu({ isOpen, setIsOpen }) {
 
             {/* Redes sociales */}
             <div className="flex justify-center gap-6 pb-10">
-                {sociallinks.map((link) => (
-                    <Link key={link.alt} href={link.href}>
-                        <Image
-                            src={`/icons/${link.src}`}
-                            alt={link.alt}
-                            width={0}
-                            height={0}
-                            sizes="8vw"
-                            className="w-10 invert"
-                        />
-                    </Link>
-                ))}
+                <Link href={'https://instagram.com/modulari.cl'}>
+                    <FaInstagram className="text-white size-10" />
+                </Link>
+                <Link href={'https://wa.me/56954015773'}>
+                    <FaWhatsapp className="text-white size-10" />
+                </Link>
+                <Link href={'mailto:contacto@modulari.cl'}>
+                    <MdEmail className="text-white size-10" />
+                </Link>
             </div>
 
         </div>

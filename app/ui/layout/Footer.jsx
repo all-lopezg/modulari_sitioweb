@@ -1,5 +1,9 @@
 'use client'
 import Image from "next/image"
+import Link from "next/link"
+import { FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import { TbWorld } from "react-icons/tb";
 
 export default function Footer() {
     return (
@@ -20,72 +24,32 @@ export default function Footer() {
             {/* Links */}
             <ul className="flex flex-col md:flex-row gap-y-2 md:justify-center md:gap-x-10 md:text-base">
 
-                <li className="flex items-center gap-x-2.5">
-                    <Image
-                        src={"/icons/insta.png"}
-                        width={0}
-                        height={0}
-                        alt="instagram modulari"
-                        className="invert w-[5vw] sm:w-[1.5vw] h-auto"
-                    />
-                    <a
-                        href="https://www.instagram.com/modulari.cl/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        modulari.cl
-                    </a>
+                <li>
+                    <Link href={"https://www.instagram.com/modulari.cl/"} className="flex items-center gap-x-2.5">
+                        <FaInstagram className="text-white w-[5vw] sm:w-[1.5vw] h-auto" />
+                        <span>@modulari.cl</span>
+                    </Link>
                 </li>
 
-                <li className="flex items-center gap-x-2.5">
-                    <Image
-                        src={"/icons/wsp.png"}
-                        width={0}
-                        height={0}
-                        alt="instagram"
-                        className="invert w-[5vw] sm:w-[1.5vw] h-auto"
-                    />
-                    <a
-                        href="https://wa.me/56954015773"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        +56954015773
-                    </a>
+                <li>
+                    <Link href={"https://wa.me/56954015773"} className="flex items-center gap-x-2.5">
+                        <FaWhatsapp className="text-white w-[5vw] sm:w-[1.5vw] h-auto" />
+                        <span>+56954015773</span>
+                    </Link>
                 </li>
 
-                <li className="flex items-center gap-x-2.5">
-                    <Image
-                        src={'/icons/email.png'}
-                        alt="icono email"
-                        width={0}
-                        height={0}
-                        className="invert w-[5vw] sm:w-[1.5vw] h-auto"
-                    />
-                    <a
-                        href="mailto:contacto@modulari.cl"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        contacto@modulari.cl
-                    </a>
+                <li>
+                    <Link href={"mailto:contacto@modulari.cl"} className="flex items-center gap-x-2.5">
+                        <MdEmail className="text-white w-[5vw] sm:w-[1.5vw] h-auto" />
+                        <span>contacto@modulari.cl</span>
+                    </Link>
                 </li>
 
-                <li className="flex items-center gap-x-2.5">
-                    <Image
-                        src={'/icons/web.png'}
-                        alt="web"
-                        width={0}
-                        height={0}
-                        className="invert w-[5vw] sm:w-[1.5vw] h-auto"
-                    />
-                    <a
-                        href="/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        www.modulari.cl
-                    </a>
+                <li>
+                    <Link href={"/"} className="flex items-center gap-x-2.5">
+                        <TbWorld className="text-white w-[5vw] sm:w-[1.5vw] h-auto" />
+                        <span>www.modulari.cl</span>
+                    </Link>
                 </li>
             </ul>
         </footer>
