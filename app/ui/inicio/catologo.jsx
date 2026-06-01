@@ -81,6 +81,8 @@ export default function Catalogo() {
 
             if (!carouselRef.current || !cardRef.current) return
 
+            carouselRef.current.scrollLeft = 0
+
             const carouselWidth = carouselRef.current.offsetWidth
             const cardWidth = cardRef.current.offsetWidth + 20 // gap
 
@@ -94,7 +96,6 @@ export default function Catalogo() {
 
         const observer = new ResizeObserver(() => {
             calculateMove()
-            carouselRef.current.scrollLeft = 0
         })
         observer.observe(carouselRef.current)
 

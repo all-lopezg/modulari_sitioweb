@@ -2,7 +2,7 @@ import { Gothic_A1, Bebas_Neue, Frank_Ruhl_Libre } from "next/font/google";
 
 export const gothic = Gothic_A1({
   subsets: ['latin'],
-  weight: '500',
+  weight: '400',
   display: 'swap',
   variable: '--font-gothic'
 })
