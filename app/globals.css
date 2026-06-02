@@ -4,17 +4,17 @@
     --color-celeste: #05A2E7;
 }
 
+h1, h2 {
+    font-family: var(--font-bebas);
+}
+
 * {
     font-family: var(--font-gothic);
 }
 
-h1 {
+/* h1 {
     font-family: var(--font-frank);
-}
-
-h2 {
-    font-family: var(--font-bebas);
-}
+} */
 
 .hide-scrollbar {
     -ms-overflow-style: none;

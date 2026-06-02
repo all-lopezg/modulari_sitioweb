@@ -5,7 +5,7 @@ import Catalogo from "./ui/inicio/catologo";
 
 export default function Home() {
     return (
-        <div className="grid gap-y-20">
+        <div className="grid gap-y-10">
             <Banner />
             <Galeria />
             <Catalogo />

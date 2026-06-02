@@ -13,16 +13,15 @@ export default function Navbar() {
 
     return (
         <div>
-            <nav className="fixed top-0 left-0 right-0 mx-auto w-[90%] z-2 bg-white flex justify-between items-center px-4 mt-3 md:px-5 py-2 md:py-3 rounded-md shadow-[0_0_8px_1px_rgba(0,0,0,0.15)]">
+            <nav className="fixed top-0 left-0 right-0 mx-auto w-[95%] lg:w-[90%] z-2 bg-white flex justify-between items-center px-4 mt-3 md:px-5 py-2 md:py-3 rounded-md shadow-[0_0_8px_1px_rgba(0,0,0,0.15)]">
 
                 {/* Logo */}
                 <Image
                     src={'/logo.png'}
                     alt="logo modulari"
-                    width={0}
-                    height={0}
-                    sizes="50vw"
-                    className="w-40 md:w-50 md:ml-5 lg:ml-0"
+                    width={347}
+                    height={67}
+                    className="w-40 lg:w-50"
                     loading="eager"
                 />
 

@@ -1,4 +1,4 @@
-import { gothic, bebas, frank } from "./ui/fonts";
+import { gothic, bebas } from "./ui/fonts";
 import "./globals.css";
 import Navbar from "./ui/layout/Navbar";
 import Footer from "./ui/layout/Footer";
@@ -10,7 +10,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html className={`${bebas.variable} ${gothic.variable} ${frank.variable}`}>
+    <html className={`${bebas.variable} ${gothic.variable}`}>
       <body className="mt-25 sm:text-lg">
 
         <Navbar />
