@@ -19,7 +19,7 @@ export default function AboutPage() {
 
             <div className="overflow-hidden rounded-lg lg:w-[50%] lg:h-[75vh]">
                 <Image
-                    src={'/imgs/nosotros/nosotros.png'}
+                    src={'/images/nosotros/nosotros.png'}
                     alt="modulari"
                     width={920} height={1160}
                     className="aspect-square object-cover w-full h-full scale-130 lg:scale-100"
