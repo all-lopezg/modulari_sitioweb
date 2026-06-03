@@ -26,14 +26,14 @@ export default function ImageOverlay({ img, isOpen, setIsOpen }) {
                             />
                         </div>
 
-                        <div className="flex items-center justify-center h-full w-full">
+                        <div className="flex items-center justify-center w-full h-full">
                             <Image
                                 src={img}
                                 alt="modulari"
                                 width={0} height={0}
                                 sizes="50vw"
                                 loading="eager"
-                                className="h-fit lg:h-full w-full lg:w-fit rounded-lg"
+                                className="h-full w-fit rounded-lg"
                             />
                         </div>
                     </div>
