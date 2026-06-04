@@ -2,8 +2,17 @@ import Link from "next/link"
 import { navlinks } from "../../lib/constants"
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import { useEffect } from "react"
 
 export default function MobileMenu({ isOpen, setIsOpen }) {
+
+    useEffect(() => {
+        if (isOpen) {
+            document.body.classList.add('overflow-hidden')
+        } else {
+            document.body.classList.remove('overflow-hidden')
+        }
+    }, [isOpen])
 
     if (!isOpen) return null
 

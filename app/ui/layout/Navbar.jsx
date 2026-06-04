@@ -21,7 +21,7 @@ export default function Navbar() {
                     alt="logo modulari"
                     width={347}
                     height={67}
-                    className="w-40 lg:w-50"
+                    className="w-40 lg:w-[12vw]"
                     loading="eager"
                 />
 
@@ -41,7 +41,7 @@ export default function Navbar() {
                 <ul className="hidden md:flex text-celeste">
 
                     {navlinks.map((link) => (
-                        <li key={link.label} className="hover:bg-celeste active:bg-celeste hover:text-white active:text-white px-2 py-1 rounded-md">
+                        <li key={link.label} className="hover:bg-celeste active:bg-celeste hover:text-white active:text-white px-2 py-1 rounded-md lg:text-[1.2vw]">
                             <Link href={link.href}>{link.label}</Link>
                         </li>
                     ))}

@@ -17,12 +17,12 @@ export default function Footer() {
                     width={0}
                     height={0}
                     sizes="60vw"
-                    className="w-65 opacity-70 md:w-60 mb-5 md:mb-8"
+                    className="w-65 opacity-50 md:w-60 lg:w-[17vw] mb-5 md:mb-8"
                 />
             </div>
 
             {/* Links */}
-            <ul className="flex flex-col md:flex-row gap-y-2 md:justify-center md:gap-x-10 md:text-base">
+            <ul className="flex flex-col md:flex-row gap-y-2 md:justify-center md:gap-x-10 md:text-base lg:text-[1.1vw]">
 
                 <li>
                     <Link href={"https://www.instagram.com/modulari.cl/"} className="flex items-center gap-x-2.5">
