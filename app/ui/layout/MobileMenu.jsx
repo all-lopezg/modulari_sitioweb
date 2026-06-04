@@ -8,7 +8,7 @@ export default function MobileMenu({ isOpen, setIsOpen }) {
     if (!isOpen) return null
 
     return (
-        <div className="fixed inset-0 bg-celeste flex flex-col z-1">
+        <div className="fixed inset-0 bg-celeste flex flex-col z-2">
 
             {/* Links */}
             <ul className="flex flex-col items-center justify-center flex-1 gap-0 w-full">

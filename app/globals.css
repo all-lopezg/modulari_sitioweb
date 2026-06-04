@@ -2,6 +2,7 @@
 
 @theme {
     --color-celeste: #05A2E7;
+    --breakpoint-xs: 600px
 }
 
 h1, h2 {

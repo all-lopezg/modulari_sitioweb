@@ -56,9 +56,8 @@ export default function Catalogo() {
         const index = Math.round(carousel.scrollLeft / (cardWidth * cardsVisible))
 
         setTotalSlides(Math.ceil(catalogo.length / cardsVisible))
-        console.log(totalSlides)
         setActiveSlide(index)
-    }, [totalSlides])
+    }, [])
 
     useEffect(() => {
 
