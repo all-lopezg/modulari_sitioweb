@@ -1,5 +1,5 @@
 "use client"
-import CatalogoCard from "./catalogo-card"
+import Image from "next/image"
 import { catalogo } from "@/app/lib/catalogo"
 import { useState, useRef, useEffect, useCallback } from "react"
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
@@ -55,9 +55,10 @@ export default function Catalogo() {
 
         const index = Math.round(carousel.scrollLeft / (cardWidth * cardsVisible))
 
-        setTotalSlides(catalogo.length / cardsVisible)
+        setTotalSlides(Math.ceil(catalogo.length / cardsVisible))
+        console.log(totalSlides)
         setActiveSlide(index)
-    }, [])
+    }, [totalSlides])
 
     useEffect(() => {
 
@@ -181,11 +182,21 @@ export default function Catalogo() {
                         }}
                         className="flex shrink-0 transition-opacity w-fit snap-center sm:snap-align-none my-3"
                     >
-                        <CatalogoCard img={item.src} name={item.name} />
+                        <div className="grid gap-y-3 w-fit bg-white p-4 rounded-md shadow-[0_0_12px_2px_rgba(0,0,0,0.1)]">
+                            <Image
+                                src={item.src}
+                                alt="modulari"
+                                width={300} height={300}
+                                className="rounded-md w-74.75 sm:w-75"
+                            />
+                            <p className="text-[22px]">{item.name}</p>
+                            <button className="text-lg bg-celeste text-white flex items-center ml-auto px-2 py-1.5 rounded-md">Más información</button>
+                        </div>
                     </div>
                 ))}
             </div>
 
+            {/* Dot Pagination */}
             <div className="flex justify-center items-center gap-1.5 mt-3">
                 {Array.from({ length: Math.ceil(totalSlides) }).map((_, index) => (
                     <div
@@ -199,6 +210,7 @@ export default function Catalogo() {
                 ))}
             </div>
 
+            {/* Flechas */}
             <div className="hidden sm:flex justify-center mt-5">
 
                 <button

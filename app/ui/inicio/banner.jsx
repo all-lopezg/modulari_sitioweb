@@ -8,7 +8,7 @@ export default function Banner() {
             {/* Texto y botones */}
             <div className="flex flex-col gap-y-2 md:gap-y-4 lg:flex-row lg:gap-x-10">
 
-                <h1 className="uppercase text-[16vw] leading-[8vh] lg:leading-normal text-center md:text-[8.5vw] lg:text-[5vw] flex items-center justify-center">
+                <h1 className="uppercase text-[16vw] leading-[16vw] lg:leading-normal text-center md:text-[8.5vw] lg:text-[5vw] flex items-center justify-center">
                     Tus eventos con <br className="md:hidden" /> el mejor estilo
                 </h1>
 

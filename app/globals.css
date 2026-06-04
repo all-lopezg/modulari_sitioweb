@@ -12,10 +12,6 @@ h1, h2 {
     font-family: var(--font-gothic);
 }
 
-/* h1 {
-    font-family: var(--font-frank);
-} */
-
 .hide-scrollbar {
     -ms-overflow-style: none;
     /* IE and Edge */
