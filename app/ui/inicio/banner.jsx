@@ -1,14 +1,22 @@
+"use client"
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "motion/react";
+
+const MotionImage = motion.create(Image)
 
 export default function Banner() {
     return (
         <div className="grid mx-5 md:mx-10 lg:mx-20 h-[calc(100vh - 62.61px)] md:mt-5 lg:mt-3 gap-y-5 lg:mb-15">
 
             {/* Texto y botones */}
-            <div className="flex flex-col gap-y-2 md:gap-y-4 lg:flex-row lg:gap-x-10">
+            <motion.div
+                initial={{ opacity: 0.5, y: -50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="flex flex-col gap-y-2 md:gap-y-4 lg:flex-row lg:gap-x-10">
 
-                <h1 className="uppercase text-[16vw] leading-[16vw] lg:leading-normal text-center md:text-[8.5vw] lg:text-[5vw] flex items-center justify-center">
+                <h1 className="uppercase text-[16vw] leading-[16vw] lg:leading-normal text-center md:text-[8.5vw] md:leading-[8.5vw] lg:text-[5vw] flex items-center justify-center">
                     Tus eventos con <br className="md:hidden" /> el mejor estilo
                 </h1>
 
@@ -33,23 +41,30 @@ export default function Banner() {
                         </Link>
                     </div>
                 </div>
-            </div>
+            </motion.div>
 
             {/* Imagen + Cuadro con texto */}
             <div className="relative">
-                <Image
+                <MotionImage
                     src={'/images/inicio/banner.png'}
                     alt="modulari"
                     width={1901} height={503}
                     loading="eager"
-                    className="rounded-lg object-cover object-[55%] lg:object-left aspect-square md:aspect-16/6 lg:h-[65vh]"
+                    className="rounded-lg object-cover object-[55%] lg:object-left aspect-square md:aspect-video lg:h-[65vh]"
+                    initial={{ opacity: 0.5, x: -120 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5 }}
                 />
 
-                <div className="w-[90%] mx-auto lg:w-[50%] h-fit lg:bottom-[-4vh] lg:right-[-2%] -translate-y-1/3 md:-translate-y-1/2 lg:translate-y-0 bg-celeste lg:absolute rounded-lg">
+                <motion.div
+                    initial={{ opacity: 0.5, y: 100 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="w-[90%] mx-auto lg:w-[50%] h-fit lg:bottom-[-4vh] lg:right-[-2%] -translate-y-1/3 md:-translate-y-1/2 lg:translate-y-0 bg-celeste lg:absolute rounded-lg">
                     <p className="text-white text-[1.3rem] lg:text-2xl p-5 lg:p-8">
                         Descubre nuestra colección de mobiliario de lujo, diseñada para transformar cualquier evento en una experiencia única. Desde íntimas reuniones hasta grandes celebraciones, tenemos las piezas perfectas para ambientar tu ocasión.
                     </p>
-                </div>
+                </motion.div>
             </div>
         </div>
     )

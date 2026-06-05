@@ -17,7 +17,7 @@ export default function Footer() {
                     width={0}
                     height={0}
                     sizes="60vw"
-                    className="w-65 opacity-50 md:w-60 lg:w-[17vw] mb-5 md:mb-8"
+                    className="w-65 opacity-50 md:w-60 lg:w-[17vw] mb-5"
                 />
             </div>
 

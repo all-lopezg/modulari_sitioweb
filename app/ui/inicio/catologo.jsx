@@ -3,6 +3,7 @@ import Image from "next/image"
 import { catalogo } from "@/app/lib/catalogo"
 import { useState, useRef, useEffect, useCallback } from "react"
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+import { motion } from "motion/react";
 
 export default function Catalogo() {
 
@@ -163,7 +164,7 @@ export default function Catalogo() {
 
     return (
         <div className="mx-5 pb-3 lg:mx-10 overflow-hidden rounded-lg lg:relative">
-            <h2 className="text-center my-10 text-5xl lg:text-6xl">Vitrina virtual</h2>
+            <h2 className="text-center my-10 text-5xl lg:text-[4vw]">Vitrina virtual</h2>
 
             {/* Carrusel */}
             <div
@@ -181,7 +182,10 @@ export default function Catalogo() {
                         }}
                         className="flex shrink-0 transition-opacity w-fit snap-center sm:snap-align-none my-3"
                     >
-                        <div className="grid gap-y-3 w-fit bg-white p-4 rounded-md shadow-[0_0_12px_2px_rgba(0,0,0,0.1)]">
+                        <motion.div
+                            initial={{ y: 0 }}
+                            whileHover={{ y: -10 }}
+                            className="grid gap-y-3 w-fit bg-white p-4 rounded-md shadow-[0_0_12px_2px_rgba(0,0,0,0.1)]">
                             <Image
                                 src={item.src}
                                 alt="modulari"
@@ -190,7 +194,7 @@ export default function Catalogo() {
                             />
                             <p className="text-[22px]">{item.name}</p>
                             <button className="text-lg bg-celeste text-white flex items-center ml-auto px-2 py-1.5 rounded-md">Más información</button>
-                        </div>
+                        </motion.div>
                     </div>
                 ))}
             </div>

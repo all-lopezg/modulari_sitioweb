@@ -1,6 +1,9 @@
 'use client'
 import Image from "next/image"
 import { useState } from "react"
+import { motion } from "motion/react";
+
+const MotionImage = motion.create(Image)
 
 export default function SofasPage() {
 
@@ -10,16 +13,24 @@ export default function SofasPage() {
         <div className="grid gap-y-20">
 
             {/* Banner */}
-            <div className="flex flex-col md:flex-row md:justify-center mx-5 lg:mx-20 gap-y-4 gap-x-8 mt-10 md:mt-5">
-                <div className="text-center md:text-end flex flex-col justify-center">
+            <div
+                className="flex flex-col md:flex-row md:justify-center mx-5 lg:mx-20 gap-y-4 gap-x-8 mt-10 md:mt-5">
+                <motion.div
+                    initial={{ y: 10, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 1 }}
+                    className="text-center md:text-end flex flex-col justify-center">
                     <h2 className="text-[15vw] leading-[15vw] md:text-[7vw] md:leading-[7vw] lg:text-[6.5vw]">Sofás modulares</h2>
                     <p className="text-[5vw] md:text-[2.6vw] lg:text-[2vw] lg:leading-[2.5vw] text-gray-500">Elige los módulos que te gusten <br /> y nosotros lo armamos para ti</p>
-                </div>
-                <Image
+                </motion.div>
+                <MotionImage
                     src={'/images/sofas/banner.png'}
                     alt="sofas modulares modulari"
                     width={600} height={285}
                     className="md:w-[50%] h-fit"
+                    initial={{ y: -10, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 1 }}
                 />
             </div>
 
@@ -27,20 +38,32 @@ export default function SofasPage() {
             {/* Caracteristicas */}
             <div className="flex flex-col md:flex-row gap-y-4 md:gap-x-5 lg:gap-x-8 justify-center mx-5 md:mx-10">
 
-                <div className="shadow-[0_0_12px_2px_rgba(0,0,0,0.1)] rounded-lg p-4 lg:p-6 w-fit">
-                    <Image
+                <motion.div
+                    initial={{ x: -100 }}
+                    animate={{ x: 0 }}
+                    transition={{ duration: 1 }}
+                    className="shadow-[0_0_12px_2px_rgba(0,0,0,0.1)] rounded-lg p-4 lg:p-6 w-fit">
+                    <MotionImage
                         src={'/images/sofas/traslado.png'}
                         alt="sofas modulares modulari"
                         width={378} height={284}
                         className="rounded-lg w-full md:h-71 lg:h-[40vh] lg:w-fit"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4 }}
                     />
                     <div className="mt-4 lg:w-[24vw]">
                         <h3 className="font-semibold text-[22px] md:text-2xl lg:text-[1.8vw] mb-1">Fácil traslado y armado</h3>
                         <p className="text-lg md:text-xl leading-6 lg:text-[1.4vw] lg:leading-[1.7vw]">Nuestros sofás modulares se pueden armar y desarmar, así que tu mudanza nunca antes fue tan fácil.</p>
                     </div>
-                </div>
+                </motion.div>
 
-                <div className="shadow-[0_0_12px_2px_rgba(0,0,0,0.1)] rounded-lg p-4 lg:p-6 w-fit">
+                <motion.div
+                    initial={{ x: 100 }}
+                    animate={{ x: 0 }}
+                    transition={{ duration: 1 }}
+                    className="shadow-[0_0_12px_2px_rgba(0,0,0,0.1)] rounded-lg p-4 lg:p-6 w-fit">
                     <video
                         src="/images/sofas/versatilidad.mp4"
                         autoPlay loop muted
@@ -50,7 +73,7 @@ export default function SofasPage() {
                         <h3 className="font-semibold text-[22px] md:text-2xl lg:text-[1.8vw] mb-1">Versatilidad</h3>
                         <p className="text-lg md:text-xl leading-6 lg:text-[1.4vw] lg:leading-[1.7vw]">No importa que te cambies de casa, puedes reorientar tu sofá Modulari y acomodarlo a nuevos espacios.</p>
                     </div>
-                </div>
+                </motion.div>
 
             </div>
 
@@ -82,32 +105,48 @@ export default function SofasPage() {
                 <div className={`${category === 'regular' ? '' : 'hidden'} lg:mx-0 flex flex-col items-center gap-y-3`}>
 
                     <div className="flex lg:flex-row gap-3">
-                        <Image
+                        <MotionImage
                             src={'/images/sofas/regular/img1.png'}
                             alt="sofas modulares modulari"
                             width={600} height={346}
                             className="rounded-lg"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.4 }}
                         />
-                        <Image
+                        <MotionImage
                             src={'/images/sofas/regular/img2.png'}
                             alt="sofas modulares modulari"
                             width={277} height={346}
                             className="hidden md:block rounded-lg"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.4 }}
                         />
                     </div>
 
                     <div className="flex flex-col md:flex-row gap-3">
-                        <Image
+                        <MotionImage
                             src={'/images/sofas/regular/img3.png'}
                             alt="sofas modulares modulari"
                             width={431} height={338}
                             className="w-full md:w-107.75 rounded-lg"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.4 }}
                         />
-                        <Image
+                        <MotionImage
                             src={'/images/sofas/regular/img4.png'}
                             alt="sofas modulares modulari"
                             width={451} height={338}
                             className="rounded-lg"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.4 }}
                         />
                     </div>
                 </div>
@@ -115,25 +154,37 @@ export default function SofasPage() {
                 <div className={`${category === 'xl' ? '' : 'hidden'} mx-5 flex flex-col items-center gap-y-3`}>
 
                     <div className="flex flex-col md:flex-row gap-3">
-                        <Image
+                        <MotionImage
                             src={'/images/sofas/xl/img1.png'}
                             alt="sofas modulares modulari"
                             width={503} height={377}
                             className="rounded-lg"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.4 }}
                         />
-                        <Image
+                        <MotionImage
                             src={'/images/sofas/xl/img2.png'}
                             alt="sofas modulares modulari"
                             width={377} height={377}
                             className="rounded-lg"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.4 }}
                         />
                     </div>
 
-                    <Image
+                    <MotionImage
                         src={'/images/sofas/xl/img3.png'}
                         alt="sofas modulares modulari"
                         width={898} height={447}
                         className="rounded-lg"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4 }}
                     />
                 </div>
             </div>
@@ -142,12 +193,22 @@ export default function SofasPage() {
             {/* Form Presupuesto */}
             <div className="flex flex-col lg:flex-row lg:justify-center mx-10 md:mx-15 lg:mx-20 gap-y-7 lg:gap-x-10">
 
-                <div className="text-center lg:text-end lg:w-[40%]">
+                <motion.div
+                    initial={{ x: -100, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 1 }}
+                    viewport={{ once: true }}
+                    className="text-center lg:text-end lg:w-[40%]">
                     <h2 className="text-4xl md:text-5xl lg:text-[3vw] mb-1">Obtén un presupuesto gratis</h2>
                     <p className="text-xl md:text-2xl lg:text-[1.5vw] text-gray-500">Cuéntanos lo que buscas y recibe una propuesta personalizada. Sin compromiso</p>
-                </div>
+                </motion.div>
 
-                <form action="" className="text-lg lg:text-[1.3vw] w-full lg:w-[40%] grid gap-y-2">
+                <motion.form
+                    initial={{ x: 100, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 1 }}
+                    viewport={{ once: true }}
+                    action="" className="text-lg lg:text-[1.3vw] w-full lg:w-[40%] grid gap-y-2">
 
                     <input type="text" id="name" placeholder="Nombre"
                         className="w-full bg-[#F3F3F3] p-2 rounded-lg" />
@@ -164,8 +225,8 @@ export default function SofasPage() {
                     >
                         Enviar
                     </button>
-                </form>
+                </motion.form>
             </div>
-        </div>
+        </div >
     )
 }

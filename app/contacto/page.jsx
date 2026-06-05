@@ -22,7 +22,7 @@ export default function ContactPage() {
                 initial={{ opacity: 0, y: 60 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, ease: "easeOut" }}
-                viewport={{ once: false }}
+                viewport={{ once: true }}
                 className="bg-white mx-auto -mt-20 md:-mt-50 lg:mt-0 xl:ml-15 lg:ml-5 lg:absolute lg:h-fit w-[95%] lg:w-fit rounded-lg shadow-[0_0_12px_2px_rgba(0,0,0,0.1)] px-6 py-8 text-center"
             >
 

@@ -3,6 +3,7 @@ import { navlinks } from "../../lib/constants"
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { useEffect } from "react"
+import { motion, AnimatePresence } from "motion/react";
 
 export default function MobileMenu({ isOpen, setIsOpen }) {
 
@@ -14,40 +15,46 @@ export default function MobileMenu({ isOpen, setIsOpen }) {
         }
     }, [isOpen])
 
-    if (!isOpen) return null
-
     return (
-        <div className="fixed inset-0 bg-celeste flex flex-col z-2">
+        <AnimatePresence>
+            {isOpen && (
+                <motion.div
+                    key="mobile-menu"
+                    initial={{ clipPath: "inset(0 0 100% 0)" }}
+                    animate={{ clipPath: "inset(0 0 0 0)" }}
+                    exit={{ clipPath: "inset(0 0 100% 0)" }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
+                    className="fixed inset-0 bg-celeste flex flex-col z-2"
+                >
+                    {/* Links */}
+                    <ul className="flex flex-col items-center justify-center flex-1 gap-0 w-full">
+                        {navlinks.map((link) => (
+                            <li key={link.label} className="w-full">
+                                <Link
+                                    href={link.href}
+                                    onClick={() => setIsOpen(false)}
+                                    className="flex justify-center items-center py-5 text-white font-bold text-2xl tracking-widest"
+                                >
+                                    {link.label}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
 
-            {/* Links */}
-            <ul className="flex flex-col items-center justify-center flex-1 gap-0 w-full">
-
-                {navlinks.map((link) => (
-                    <li key={link.label} className="w-full">
-                        <Link
-                            href={link.href}
-                            onClick={() => setIsOpen(false)}
-                            className="flex justify-center items-center py-5 text-white font-bold text-2xl tracking-widest"
-                        >
-                            {link.label}
+                    {/* Redes sociales */}
+                    <div className="flex justify-center gap-6 pb-10">
+                        <Link href={'https://instagram.com/modulari.cl'}>
+                            <FaInstagram className="text-white size-10" />
                         </Link>
-                    </li>
-                ))}
-            </ul>
-
-            {/* Redes sociales */}
-            <div className="flex justify-center gap-6 pb-10">
-                <Link href={'https://instagram.com/modulari.cl'}>
-                    <FaInstagram className="text-white size-10" />
-                </Link>
-                <Link href={'https://wa.me/56954015773'}>
-                    <FaWhatsapp className="text-white size-10" />
-                </Link>
-                <Link href={'mailto:contacto@modulari.cl'}>
-                    <MdEmail className="text-white size-10" />
-                </Link>
-            </div>
-
-        </div>
+                        <Link href={'https://wa.me/56954015773'}>
+                            <FaWhatsapp className="text-white size-10" />
+                        </Link>
+                        <Link href={'mailto:contacto@modulari.cl'}>
+                            <MdEmail className="text-white size-10" />
+                        </Link>
+                    </div>
+                </motion.div>
+            )}
+        </AnimatePresence>
     )
 }
