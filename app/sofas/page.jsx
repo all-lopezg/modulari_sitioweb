@@ -104,7 +104,7 @@ export default function SofasPage() {
                 {/* Imagenes */}
                 <div className={`${category === 'regular' ? '' : 'hidden'} lg:mx-0 flex flex-col items-center gap-y-3`}>
 
-                    <div className="flex lg:flex-row gap-3">
+                    <div className="flex xs:flex-row gap-3">
                         <MotionImage
                             src={'/images/sofas/regular/img1.png'}
                             alt="sofas modulares modulari"
@@ -119,7 +119,7 @@ export default function SofasPage() {
                             src={'/images/sofas/regular/img2.png'}
                             alt="sofas modulares modulari"
                             width={277} height={346}
-                            className="hidden md:block rounded-lg"
+                            className="hidden xs:block rounded-lg"
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
                             viewport={{ once: true }}
@@ -127,12 +127,12 @@ export default function SofasPage() {
                         />
                     </div>
 
-                    <div className="flex flex-col md:flex-row gap-3">
+                    <div className="flex flex-col xs:flex-row gap-3">
                         <MotionImage
                             src={'/images/sofas/regular/img3.png'}
                             alt="sofas modulares modulari"
                             width={431} height={338}
-                            className="w-full md:w-107.75 rounded-lg"
+                            className="md:w-107.75 rounded-lg"
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
                             viewport={{ once: true }}
@@ -153,7 +153,7 @@ export default function SofasPage() {
 
                 <div className={`${category === 'xl' ? '' : 'hidden'} mx-5 flex flex-col items-center gap-y-3`}>
 
-                    <div className="flex flex-col md:flex-row gap-3">
+                    <div className="flex flex-col xs:flex-row gap-3">
                         <MotionImage
                             src={'/images/sofas/xl/img1.png'}
                             alt="sofas modulares modulari"
@@ -191,23 +191,20 @@ export default function SofasPage() {
 
 
             {/* Form Presupuesto */}
-            <div className="flex flex-col lg:flex-row lg:justify-center mx-10 md:mx-15 lg:mx-20 gap-y-7 lg:gap-x-10">
+            <motion.div
+                initial={{ y: -100, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 1 }}
+                viewport={{ once: true }}
+                className="flex flex-col lg:flex-row lg:justify-center mx-10 md:mx-15 lg:mx-20 gap-y-7 lg:gap-x-10">
 
-                <motion.div
-                    initial={{ x: -100, opacity: 0 }}
-                    whileInView={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 1 }}
-                    viewport={{ once: true }}
+                <div
                     className="text-center lg:text-end lg:w-[40%]">
                     <h2 className="text-4xl md:text-5xl lg:text-[3vw] mb-1">Obtén un presupuesto gratis</h2>
                     <p className="text-xl md:text-2xl lg:text-[1.5vw] text-gray-500">Cuéntanos lo que buscas y recibe una propuesta personalizada. Sin compromiso</p>
-                </motion.div>
+                </div>
 
-                <motion.form
-                    initial={{ x: 100, opacity: 0 }}
-                    whileInView={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 1 }}
-                    viewport={{ once: true }}
+                <form
                     action="" className="text-lg lg:text-[1.3vw] w-full lg:w-[40%] grid gap-y-2">
 
                     <input type="text" id="name" placeholder="Nombre"
@@ -225,8 +222,8 @@ export default function SofasPage() {
                     >
                         Enviar
                     </button>
-                </motion.form>
-            </div>
+                </form>
+            </motion.div>
         </div >
     )
 }

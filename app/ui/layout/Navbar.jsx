@@ -38,7 +38,7 @@ export default function Navbar() {
                 </div>
 
                 {/* Links */}
-                <ul className="hidden md:flex text-celeste">
+                <ul className="hidden md:flex text-celeste uppercase">
 
                     {navlinks.map((link) => (
                         <li key={link.label} className="hover:bg-celeste active:bg-celeste hover:text-white active:text-white px-2 py-1 rounded-md lg:text-[1.2vw]">

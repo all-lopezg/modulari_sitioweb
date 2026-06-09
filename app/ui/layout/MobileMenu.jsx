@@ -27,7 +27,7 @@ export default function MobileMenu({ isOpen, setIsOpen }) {
                     className="fixed inset-0 bg-celeste flex flex-col z-2"
                 >
                     {/* Links */}
-                    <ul className="flex flex-col items-center justify-center flex-1 gap-0 w-full">
+                    <ul className="flex flex-col items-center justify-center flex-1 gap-0 w-full uppercase">
                         {navlinks.map((link) => (
                             <li key={link.label} className="w-full">
                                 <Link

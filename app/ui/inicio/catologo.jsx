@@ -42,8 +42,8 @@ export default function Catalogo() {
     }, [handleCardOpacity])
 
     {/* Crea una Dot Pagination en base a la cantidad de slides */ }
-    const [activeSlide, setActiveSlide] = useState(0)
-    const [totalSlides, setTotalSlides] = useState(catalogo.length)
+    const [activeSlide, setActiveSlide] = useState(1)
+    const [totalSlides, setTotalSlides] = useState(12)
 
     const handleDotPagination = useCallback(() => {
 
@@ -53,6 +53,8 @@ export default function Catalogo() {
 
         const cardWidth = card.offsetWidth + 20
         const cardsVisible = Math.trunc(carousel.offsetWidth / cardWidth)
+        
+        if (cardsVisible <= 0) return
 
         const index = Math.round(carousel.scrollLeft / (cardWidth * cardsVisible))
 
@@ -201,7 +203,7 @@ export default function Catalogo() {
 
             {/* Dot Pagination */}
             <div className="flex justify-center items-center gap-1.5 mt-3">
-                {Array.from({ length: Math.ceil(totalSlides) }).map((_, index) => (
+                {Array.from({ length: totalSlides }).map((_, index) => (
                     <div
                         key={index}
                         className={`transition-all duration-300 rounded-full h-2
