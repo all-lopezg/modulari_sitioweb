@@ -51,7 +51,7 @@ export default function ContactPage() {
                             href={"https://wa.me/56954015773"}
                             className="bg-[#25D366] hover:bg-[#1b8e45] active:bg-[#1b8e45] text-white rounded-md py-2 flex items-center justify-center gap-x-2 w-full"
                         >
-                            <FaWhatsapp className="text-white w-[4vw] md:w-[2vw] h-auto" />
+                            <FaWhatsapp className="text-white w-[5vw] md:w-[2vw] h-auto" />
                             <span>WhatsApp</span>
                         </Link>
                     </div>
