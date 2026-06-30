@@ -62,7 +62,7 @@ export default function Footer() {
 
                             <li>
                                 <Link href={"/"} className="flex items-center gap-x-2.5">
-                                    <TbWorld className="text-black bg-celeste rounded-full p-1 w-[7vw] xs:size-7 lg:size-8 h-auto" />
+                                    <TbWorld className="text-white bg-celeste rounded-full p-1 w-[7vw] xs:size-7 lg:size-8 h-auto" />
                                     <span>www.modulari.cl</span>
                                 </Link>
                             </li>
