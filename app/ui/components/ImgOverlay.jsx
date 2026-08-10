@@ -19,7 +19,7 @@ export default function ImageOverlay({ img, isOpen, setIsOpen }) {
     return (
         <AnimatePresence>
             {isOpen && (
-                <motion.div className="fixed inset-0 z-50 flex items-center justify-center">
+                <motion.div className="fixed inset-0 z-100 flex items-center justify-center">
                     <div className="absolute inset-0 bg-black/70 backdrop-blur-sm p-8">
 
                         <div className="absolute top-5 lg:top-8 right-5 lg:right-8">

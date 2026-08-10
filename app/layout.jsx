@@ -2,6 +2,7 @@ import { gothic, bebas } from "./ui/fonts";
 import "./globals.css";
 import Navbar from "./ui/layout/Navbar";
 import Footer from "./ui/layout/Footer";
+import Fabs from "./ui/components/Fabs";
 
 export const metadata = {
   title: "Modulari",
@@ -9,6 +10,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
   return (
     <html className={`${bebas.variable} ${gothic.variable}`}>
       <body className="mt-25 sm:text-lg">
@@ -16,7 +18,8 @@ export default function RootLayout({ children }) {
         <Navbar />
         {children}
         <Footer />
-        
+
+        <Fabs />
       </body>
     </html>
   );

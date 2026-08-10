@@ -1,15 +1,15 @@
 import Banner from "./ui/inicio/banner";
-import Galeria from "./ui/inicio/galeria";
-import ContactPage from "./contacto/page";
-import Catalogo from "./ui/inicio/catologo";
+import Eventos from "./ui/inicio/eventos";
+import Contacto from "./contacto/page";
+import Vitrina from "./ui/inicio/vitrina";
 
 export default function Home() {
     return (
         <div className="grid gap-y-10">
             <Banner />
-            <Galeria />
-            <Catalogo />
-            <ContactPage />
+            <Eventos />
+            <Vitrina />
+            <Contacto />
         </div>
     );
 }

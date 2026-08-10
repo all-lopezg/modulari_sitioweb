@@ -14,12 +14,12 @@ export default function Footer() {
                 {/* Logo */}
                 <div className="w-full flex justify-center lg:justify-start">
                     <Image
-                        src={"/logo-invertido.png"}
+                        src={"/images/logo-invertido.png"}
                         alt="logo modulari"
-                        width={0}
-                        height={0}
+                        width={10606}
+                        height={1891}
                         sizes="60vw"
-                        className="h-fit w-75 opacity-50 md:w-90 lg:w-[45%]"
+                        className="h-fit w-75 md:w-90 lg:w-[45%]"
                     />
                 </div>
 
@@ -29,7 +29,7 @@ export default function Footer() {
                         <ul className="">
                             {navlinks.map(link => (
                                 <li key={link.label}>
-                                    <Link href={link.href} className="capitalize">{link.label}</Link>
+                                    <Link href={link.href} className="capitalize hover:underline">{link.label}</Link>
                                 </li>
                             ))}
                         </ul>
@@ -61,7 +61,7 @@ export default function Footer() {
                             </li>
 
                             <li>
-                                <Link href={"/"} className="flex items-center gap-x-2.5">
+                                <Link href={"/#inicio"} className="flex items-center gap-x-2.5">
                                     <TbWorld className="text-white bg-celeste rounded-full p-1 w-[7vw] xs:size-7 lg:size-8 h-auto" />
                                     <span>www.modulari.cl</span>
                                 </Link>

@@ -6,39 +6,36 @@ import { motion } from "motion/react";
 const MotionImage = motion.create(Image)
 
 export default function Banner() {
+
     return (
-        <div className="grid mx-5 md:mx-10 lg:mx-20 h-[calc(100vh - 62.61px)] md:mt-5 lg:mt-3 gap-y-5 lg:mb-15">
+        <div className="grid mx-5 md:mx-10 lg:mx-20 md:mt-5 lg:mt-0 gap-y-5 scroll-mt-24 lg:scroll-mt-32" id="inicio">
 
             {/* Texto y botones */}
             <motion.div
                 initial={{ opacity: 0.5, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="flex flex-col gap-y-2 md:gap-y-4 lg:flex-row lg:gap-x-10">
+                viewport={{ once: true }}
+                className="flex flex-col gap-y-2 md:gap-y-4 lg:flex-row lg:gap-x-5">
 
-                <h1 className="uppercase text-[16vw] leading-[16vw] lg:leading-normal text-center md:text-[8.5vw] md:leading-[8.5vw] lg:text-[5vw] flex items-center justify-center">
-                    Tus eventos con <br className="md:hidden" /> el mejor estilo
+                <h1 className="uppercase whitespace-nowrap text-center text-[13vw] sm:text-[11vw] md:text-[10vw] lg:text-[4vw] leading-12 sm:leading-20 md:leading-[8.5vw] lg:leading-normal">
+                    Tu evento con estilo
                 </h1>
 
                 <div className="gap-y-3 flex flex-col flex-1">
 
-                    <p className="text-gray-500 text-center lg:text-start text-[1.4rem] lg:text-[1.5vw] lg:leading-[4.5vh]">
-                        Explora nuestro amplio catálogo de mobiliarios y crea ambientes únicos para cada ocasión.
+                    <p className="text-gray-500 text-center lg:whitespace-nowrap lg:text-start text-[1.4rem] lg:text-[1.5vw] lg:leading-[3vh] xl:leading-[4vh]">
+                        Explora nuestro catálogo de mobiliarios y crea ambientes únicos para cada ocasión.
                     </p>
 
-                    <div className="flex flex-col md:flex-row gap-y-2 gap-x-5 text-[1.4rem] lg:text-[1.3vw] lg:leading-8">
+                    <div className="flex flex-col sm:flex-row gap-y-2 gap-x-5 text-[1.4rem] lg:text-[1.3vw] lg:leading-5 xl:leading-8">
                         <Link
-                            href={'/contacto'}
-                            className="bg-celeste hover:bg-blue-500 active:bg-blue-500 text-white rounded-md text-center flex-1 py-1 flex items-center justify-center"
+                            href={''}
+                            className="bg-celeste hover:bg-blue-800 active:bg-blue-800 border-2 text-white rounded-md text-center flex-1 py-2 flex items-center justify-center"
                         >
                             Cotiza aquí
                         </Link>
-                        <Link
-                            href={''}
-                            className="border-celeste hover:bg-celeste/30 active:bg-celeste/30 border-2 text-celeste rounded-md text-center flex-1 py-1 lg:py-1.5 flex items-center justify-center"
-                        >
-                            Revisa nuestro catálogo
-                        </Link>
+                        <p className="text-center text-[1.3rem] my-auto">o desde nuestro catálogo</p>
                     </div>
                 </div>
             </motion.div>
@@ -46,11 +43,11 @@ export default function Banner() {
             {/* Imagen + Cuadro con texto */}
             <div className="relative">
                 <MotionImage
-                    src={'/images/inicio/banner.png'}
-                    alt="modulari"
-                    width={1901} height={503}
+                    src={'/images/galeria/img6.jpg'}
+                    alt="Sillón blanco, sillas y banqueta de ratán, mesa de madera rustica y alfombra yute cuadrada en exterior"
+                    width={3024} height={4032}
                     loading="eager"
-                    className="rounded-lg object-cover object-[55%] lg:object-left aspect-square md:aspect-video lg:h-[65vh]"
+                    className={`rounded-lg aspect-square lg:aspect-video object-cover lg:w-full lg:h-[75vh] lg:object-[center_65%]`}
                     initial={{ opacity: 0.5, x: -120 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5 }}
@@ -60,9 +57,10 @@ export default function Banner() {
                     initial={{ opacity: 0.5, y: 100 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="w-[90%] mx-auto lg:w-[50%] h-fit lg:bottom-[-4vh] lg:right-[-2%] -translate-y-1/3 md:-translate-y-1/2 lg:translate-y-0 bg-celeste lg:absolute rounded-lg">
-                    <p className="text-white text-[1.3rem] lg:text-2xl p-5 lg:p-8">
-                        Descubre nuestra colección de mobiliario de lujo, diseñada para transformar cualquier evento en una experiencia única. Desde íntimas reuniones hasta grandes celebraciones, tenemos las piezas perfectas para ambientar tu ocasión.
+                    className=" bg-celeste/80 rounded-lg w-[90%] mx-auto -translate-y-1/4 sm:-translate-y-1/3 lg:w-[50%] lg:translate-x-[45%] lg:translate-y-[-110%]"
+                >
+                    <p className="text-white text-[1rem] lg:text-[1.5vw] p-4 lg:p-6">
+                        Con nuestra colección de mobiliario de lujo, transformaremos cualquier evento en una experiencia única. Tenemos las piezas perfectas para ambientar tu ocasión.
                     </p>
                 </motion.div>
             </div>
