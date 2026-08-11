@@ -22,7 +22,7 @@ export default function Vitrina() {
 
                     <p className="text-[1.2rem] lg:text-[1.4rem] text-center lg:text-start">Contamos con una amplia variedad de estilos para ambientar cualquier celebración, donde cada pieza combina diseño y funcionalidad. Todo elaborado con materiales de primera calidad, pensados para lucir impecables en cada ocasión.</p>
 
-                    <Link href={''} className="text-[1.2rem] lg:text-[1.4rem] bg-celeste hover:bg-blue-500 active:bg-blue-500 text-white flex h-fit py-2 font-bold lg:mx-0 rounded-md justify-center lg:self-start lg:px-5 lg:mt-5">
+                    <Link href={'https://modulari.ommi.cl/vitrina'} target="_blank" rel="noopener noreferrer" className="text-[1.2rem] lg:text-[1.4rem] bg-celeste hover:bg-blue-500 active:bg-blue-500 text-white flex h-fit py-2 font-bold lg:mx-0 rounded-md justify-center lg:self-start lg:px-5 lg:mt-5">
                         Revisa nuestro catálogo
                     </Link>
                 </motion.div>

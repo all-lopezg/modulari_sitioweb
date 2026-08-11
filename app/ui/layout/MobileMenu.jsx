@@ -32,6 +32,7 @@ export default function MobileMenu({ isOpen, setIsOpen }) {
                             <li key={link.label} className="w-full">
                                 <Link
                                     href={link.href}
+                                    {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                                     onClick={() => setIsOpen(false)}
                                     className="flex justify-center items-center py-5 text-white font-bold text-2xl tracking-widest"
                                 >

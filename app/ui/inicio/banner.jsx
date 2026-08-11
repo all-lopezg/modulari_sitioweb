@@ -30,7 +30,9 @@ export default function Banner() {
 
                     <div className="flex flex-col sm:flex-row gap-y-2 gap-x-5 text-[1.4rem] lg:text-[1.3vw] lg:leading-5 xl:leading-8">
                         <Link
-                            href={''}
+                            href={'https://modulari.ommi.cl/vitrina'}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="bg-celeste hover:bg-blue-800 active:bg-blue-800 border-2 text-white rounded-md text-center flex-1 py-2 flex items-center justify-center"
                         >
                             Cotiza aquí

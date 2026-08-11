@@ -29,7 +29,7 @@ export default function Footer() {
                         <ul className="">
                             {navlinks.map(link => (
                                 <li key={link.label}>
-                                    <Link href={link.href} className="capitalize hover:underline">{link.label}</Link>
+                                    <Link href={link.href} {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})} className="capitalize hover:underline">{link.label}</Link>
                                 </li>
                             ))}
                         </ul>

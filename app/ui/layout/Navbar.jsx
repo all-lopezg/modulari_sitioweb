@@ -44,7 +44,7 @@ export default function Navbar() {
 
                     {navlinks.map((link) => (
                         <li key={link.label} className="hover:bg-celeste active:bg-celeste hover:text-white active:text-white px-2 py-1 rounded-md lg:text-[1.2vw]">
-                            <Link href={link.href}>{link.label}</Link>
+                            <Link href={link.href} {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}>{link.label}</Link>
                         </li>
                     ))}
                 </ul>
