@@ -31,5 +31,10 @@ jobs:
       - name: Autenticar CLI de InsForge
         run: npx -y @insforge/cli login --user-api-key "${{ secrets.INSFORGE_USER_API_KEY }}" --json
 
+      # El entorno de CI no tiene .insforge/project.json (está en .gitignore),
+      # así que hay que vincular el proyecto antes de desplegar.
+      - name: Vincular proyecto de InsForge
+        run: npx -y @insforge/cli link --project-id "$INSFORGE_PROJECT_ID" -y
+
       - name: Desplegar en InsForge
         run: npx -y @insforge/cli deployments deploy . --yes
