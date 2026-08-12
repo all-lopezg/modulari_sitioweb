@@ -1,0 +1,35 @@
+# Deploy automático a InsForge: se ejecuta en cada push a main.
+# Requiere un secreto en GitHub: INSFORGE_USER_API_KEY (creado en InsForge → Profile → API Keys).
+name: Deploy a InsForge
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      INSFORGE_PROJECT_ID: 0a17cd33-48bd-48db-be5b-d40345d5d190
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Verificar build local
+        run: npm run build
+
+      - name: Autenticar CLI de InsForge
+        run: npx -y @insforge/cli login --user-api-key "${{ secrets.INSFORGE_USER_API_KEY }}" --json
+
+      - name: Desplegar en InsForge
+        run: npx -y @insforge/cli deployments deploy . --yes
