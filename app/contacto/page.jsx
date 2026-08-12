@@ -1,7 +1,8 @@
 "use client"
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import { useState } from "react";
+import { IoCheckmarkCircle } from "react-icons/io5";
 
 const formVacio = { nombre: '', direccion: '', email: '', telefono: '', asunto: '', mensaje: '' }
 
@@ -44,7 +45,8 @@ export default function Contacto() {
     }
 
     return (
-        <div id="contacto" className="relative mt-5 flex flex-col justify-center mx-4 lg:mx-20 z-1">
+        <>
+            <div id="contacto" className="relative mt-5 flex flex-col justify-center mx-4 lg:mx-20 z-1">
 
             <Image
                 src={'/images/contacto/contacto.png'}
@@ -86,15 +88,47 @@ export default function Contacto() {
                         {enviando ? 'Enviando...' : 'Enviar'}
                     </button>
 
-                    {estado === 'exito' && (
-                        <p className="text-green-600 text-base">¡Mensaje enviado! Te contactaremos pronto.</p>
-                    )}
                     {estado === 'error' && (
                         <p className="text-red-500 text-base">{error}</p>
                     )}
                 </form>
             </motion.div>
-        </div>
+            </div>
+
+            {/* Modal de confirmación */}
+            <AnimatePresence>
+                {estado === 'exito' && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={() => setEstado(null)}
+                        className="fixed inset-0 z-[100] bg-black/60 flex items-center justify-center p-4"
+                        role="dialog"
+                        aria-modal="true"
+                    >
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                            transition={{ duration: 0.25, ease: "easeOut" }}
+                            onClick={(e) => e.stopPropagation()}
+                            className="bg-white rounded-lg shadow-xl px-8 py-10 text-center max-w-sm w-full"
+                        >
+                            <IoCheckmarkCircle className="text-green-500 text-6xl mx-auto mb-4" />
+                            <h3 className="text-2xl font-semibold mb-2">¡Mensaje enviado!</h3>
+                            <p className="text-gray-500 text-lg mb-6">Te contactaremos pronto.</p>
+                            <button
+                                onClick={() => setEstado(null)}
+                                className="w-full bg-celeste hover:bg-blue-500 active:bg-blue-500 rounded-md py-2 text-white"
+                            >
+                                Cerrar
+                            </button>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </>
     )
 }
 
