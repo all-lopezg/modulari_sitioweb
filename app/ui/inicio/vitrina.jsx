@@ -18,7 +18,7 @@ export default function Vitrina() {
                     transition={{ duration: 0.5 }}
                     viewport={{ once: true }}
                 >
-                    <h2 className="text-[2.8rem] lg:text-[4vw] text-center lg:text-start">Catálogo</h2>
+                    <h2 className="text-[2.8rem] lg:text-[4vw] text-center lg:text-start">Catálogo de mobiliario para eventos</h2>
 
                     <p className="text-[1.2rem] lg:text-[1.4rem] text-center lg:text-start">Contamos con una amplia variedad de estilos para ambientar cualquier celebración, donde cada pieza combina diseño y funcionalidad. Todo elaborado con materiales de primera calidad, pensados para lucir impecables en cada ocasión.</p>
 
@@ -31,7 +31,7 @@ export default function Vitrina() {
                     <MotionImage
                         src="/images/inicio/catalogo/silla_raun.png"
                         width={333} height={333}
-                        alt="Sitial Barro Modulari"
+                        alt="Silla Raun de ratán Modulari"
                         className="rounded-md w-full h-32 xs:h-40 md:h-60 lg:h-48 object-cover object-[center_70%]"
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}

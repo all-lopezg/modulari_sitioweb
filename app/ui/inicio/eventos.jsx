@@ -143,7 +143,7 @@ export default function Eventos() {
                             <MotionImage
                                 src="/images/inicio/galeria/img8.jpg"
                                 width={972} height={802}
-                                alt="modulari"
+                                alt="Mobiliario de lujo Modulari ambientando un evento"
                                 loading="eager"
                                 className="rounded-lg cursor-pointer hover:brightness-40 active:brightness-40"
                                 onClick={() => handleOverlay("/images/inicio/galeria/img8.jpg")}
@@ -157,7 +157,7 @@ export default function Eventos() {
                         <div className="grid gap-2 sm:grid-cols-2">
                             <MotionImage
                                 src="/images/galeria/img11.jpg"
-                                alt="Galería Modulari img11"
+                                alt="Mesas y sillas de Modulari ambientando un evento"
                                 width={3024}
                                 height={4032}
                                 loading="eager"
@@ -170,7 +170,7 @@ export default function Eventos() {
                             />
                             <MotionImage
                                 src="/images/galeria/img13.jpg"
-                                alt="Galería Modulari img13"
+                                alt="Mobiliario Modulari decorando una celebración"
                                 width={3024}
                                 height={4032}
                                 loading="eager"

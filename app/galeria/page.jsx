@@ -26,7 +26,7 @@ export default function Galeria() {
                 transition={{ duration: 1, ease: "easeOut" }}
                 className="mb-10"
             >
-                <h1 className="text-[3rem] lg:text-[4rem] text-center">Galería de Fotos</h1>
+                <h1 className="text-[3rem] lg:text-[4rem] text-center">Galería de Eventos</h1>
 
                 <p className="text-[1.2rem] lg:text-[1.4rem] text-gray-600 w-[80%] lg:w-[50%] text-center mx-auto -mt-1">Así luce Modulari en cada evento. Espacios pensados para sorprender, con mobiliario que combina estilo y confort en cada detalle.</p>
             </motion.div>
@@ -59,7 +59,7 @@ export default function Galeria() {
                 />
                 <MotionImage
                     src="/images/galeria/img12.jpg"
-                    alt="mesa de bar"
+                    alt="Mesa de bar de madera para eventos"
                     width={3024}
                     height={4032}
                     className="rounded-md object-cover cursor-pointer hover:brightness-40 active:brightness-40 aspect-square"
@@ -95,7 +95,7 @@ export default function Galeria() {
                 />
                 <MotionImage
                     src="/images/galeria/img17.jpg"
-                    alt="mesa de bar y lamparas colgantes"
+                    alt="Mesa de bar y lámparas colgantes en evento"
                     width={3024}
                     height={4032}
                     className="rounded-md object-cover cursor-pointer hover:brightness-40 active:brightness-40 aspect-square"

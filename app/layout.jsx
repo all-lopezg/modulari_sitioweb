@@ -7,19 +7,24 @@ import GoogleAnalytics from "@/app/lib/GoogleAnalytics";
 
 export const metadata = {
   title: {
-    default: "Modulari | Muebles modulares para oficinas",
+    default: "Modulari | Arriendo de mobiliario para eventos",
     template: `%s | Modulari`,
   },
   description:
-    "Modulari diseña muebles modulares y versátiles para oficinas y espacios corporativos. Consulta nuestro catálogo y transforma tu espacio.",
+    "Arriendo de mobiliario de lujo para eventos en Santiago, Valparaíso y O'Higgins. Mesas, sillas, sillones y muebles de ratán para bodas, celebraciones y eventos corporativos. Cotiza en línea.",
   keywords: [
-    "muebles",
-    "oficina",
-    "modulares",
-    "mobiliario",
-    "mobiliario de oficina",
+    "arriendo de mobiliario para eventos",
+    "arriendo de muebles para eventos",
+    "mobiliario para eventos",
+    "mesas y sillas para eventos",
+    "arriendo de mobiliario para bodas",
+    "mobiliario de lujo para eventos",
+    "arriendo de mobiliario Santiago",
+    "arriendo de mobiliario Valparaíso",
+    "mobiliario para eventos corporativos",
+    "mobiliario de ratán",
+    "Modulari",
     "Chile",
-    "modular",
   ],
   authors: [{ name: "Modulari" }],
   creator: "Modulari",
@@ -30,9 +35,9 @@ export const metadata = {
   },
   metadataBase: new URL("https://modulari.cl"),
   openGraph: {
-    title: "Modulari | Muebles modulares para oficinas",
+    title: "Modulari | Arriendo de mobiliario para eventos",
     description:
-      "Diseños versátiles y adaptables a tu espacio. Muebles modulares para oficinas.",
+      "Mobiliario de lujo para bodas, celebraciones y eventos corporativos en Santiago, Valparaíso y O'Higgins.",
     url: "https://modulari.cl",
     siteName: "Modulari",
     images: [
@@ -48,11 +53,14 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Modulari | Muebles modulares para oficinas",
+    title: "Modulari | Arriendo de mobiliario para eventos",
     description:
-      "Diseños versátiles y adaptables a tu espacio. Muebles modulares para oficinas.",
+      "Mobiliario de lujo para bodas, celebraciones y eventos corporativos en Santiago, Valparaíso y O'Higgins.",
     creator: "@modulari.cl",
     images: ["/images/logo.png"],
+  },
+  alternates: {
+    canonical: "/",
   },
   robots: {
     index: true,
@@ -67,12 +75,44 @@ export const metadata = {
   },
 };
 
+// Datos estructurados (schema.org) para que Google entienda qué es Modulari,
+// dónde opera y qué servicio ofrece — clave para el SEO local.
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://modulari.cl",
+  name: "Modulari",
+  description:
+    "Arriendo de mobiliario de lujo para eventos en Santiago, Valparaíso y O'Higgins.",
+  url: "https://modulari.cl",
+  telephone: "+56954015773",
+  email: "contacto@modulari.cl",
+  image: "https://modulari.cl/images/logo.png",
+  priceRange: "$$",
+  areaServed: [
+    { "@type": "AdministrativeArea", name: "Región Metropolitana de Santiago" },
+    { "@type": "AdministrativeArea", name: "Región de Valparaíso" },
+    { "@type": "AdministrativeArea", name: "Región del Libertador General Bernardo O'Higgins" },
+  ],
+  makesOffer: {
+    "@type": "Offer",
+    itemOffered: {
+      "@type": "Service",
+      name: "Arriendo de mobiliario para eventos",
+    },
+  },
+};
+
 export default function RootLayout({ children }) {
 
   return (
     <html className={`${bebas.variable} ${gothic.variable}`}>
       <body className="mt-25 sm:text-lg">
 
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <Navbar />
         {children}
         <Footer />

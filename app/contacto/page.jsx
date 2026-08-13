@@ -71,7 +71,7 @@ export default function Contacto() {
 
             <Image
                 src={'/images/contacto/contacto.png'}
-                alt="contacto"
+                alt="Ambientación de evento con mobiliario Modulari"
                 width={1225}
                 height={825}
                 className="w-full h-full rounded-lg lg:object-cover xl:aspect-16/7 2xl:aspect-16/6"

@@ -19,7 +19,7 @@ export default function AboutPage() {
                 transition={{ duration: 0.5 }}
                 className="bg-celeste text-white rounded-lg text-center gap-y-4 lg:gap-y-10 py-8 px-8 xs:px-8 lg:px-10 md:h-[60vh] lg:h-[80vh] md:w-[50%] flex flex-col justify-center">
 
-                <h2 className="text-5xl xs:text-6xl lg:text-[5.5vw]">Nosotros</h2>
+                <h1 className="text-5xl xs:text-6xl lg:text-[5.5vw]">Nosotros</h1>
 
                 <p className={`${merriweather.className} text-xl xs:text-2xl lg:text-[2.2vw]`}>Somos 2 hermanos apasionados por el diseño y la arquitectura.</p>
 
@@ -35,7 +35,7 @@ export default function AboutPage() {
                 className="overflow-hidden rounded-lg w-full md:w-[50%] md:h-[60vh] lg:h-[80vh]">
                 <Image
                     src={'/images/nosotros/nosotros.png'}
-                    alt="modulari"
+                    alt="Modulari: arriendo de mobiliario para eventos"
                     width={920} height={1160}
                     className="aspect-square xs:aspect-video md:aspect-auto object-[50%_35%] object-cover w-full h-full scale-130 lg:scale-100"
                 />
