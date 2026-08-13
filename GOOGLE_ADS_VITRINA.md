@@ -136,5 +136,6 @@ y crear esos secrets en GitHub → Settings → Secrets and variables → Action
 ## Notas finales
 
 - El **Conversion ID es el mismo** de la cuenta (`AW-...`), igual que en el sitio institucional; el **label es distinto** (uno por acción de conversión).
+- Si la cuenta tiene un **Google tag unificado (`GT-...`)**, cargarlo como tag principal: script `gtag/js?id=GT-...`, luego `gtag('config', 'GT-...')` y `gtag('config', 'AW-...')` (mismo patrón que el sitio institucional, que ya usa `GT-M3VG9QX4`). La conversión se dispara igual con `send_to: AW-.../label`.
 - No instalar Google Analytics 4 salvo que se pida explícitamente (la tarea es solo conversión de Ads).
 - Los comentarios y mensajes de log del código deben escribirse en **español** (convención del proyecto).

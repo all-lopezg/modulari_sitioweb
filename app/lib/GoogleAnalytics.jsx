@@ -5,9 +5,11 @@ import { usePathname } from "next/navigation";
 import Script from "next/script";
 
 // IDs de Google (NEXT_PUBLIC_* = vars expuestas al bundle, seguras para cliente)
+// - GT_ID:   Google tag unificado (formato GT-XXXXXXXX) — RECOMENDADO como tag principal
 // - GA_ID:    Google Analytics 4 (formato G-XXXXXXXXXX) — OPCIONAL
 // - GADS_ID:  Google Ads Conversion ID (formato AW-XXXXXXXXXX) — RECOMENDADO
 //             Si esta configurado, se registra la conversion al enviar el formulario.
+const GT_ID = process.env.NEXT_PUBLIC_GT_ID;
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 const GADS_ID = process.env.NEXT_PUBLIC_GADS_ID;
 
@@ -25,7 +27,7 @@ export default function GoogleAnalytics() {
   }, [pathname, search]);
 
   // No renderizar nada si no hay IDs configurados (entorno de dev sin tracking)
-  if (!GA_ID && !GADS_ID) return null;
+  if (!GT_ID && !GA_ID && !GADS_ID) return null;
 
   return (
     <>
@@ -43,12 +45,12 @@ export default function GoogleAnalytics() {
         `}
       </Script>
 
-      {/* El script externo gtag.js debe cargarse si hay GA4 O Ads configurado.
-          Si solo existe GADS_ID (sin GA4), se carga igualmente con el ID de Ads;
-          de lo contrario los comandos quedan encolados y nunca se envían. */}
-      {(GA_ID || GADS_ID) && (
+      {/* El script externo gtag.js se carga con el primer ID disponible: el Google tag
+          (GT-...) como principal, y si no existe, con GA4 o Ads. Si no hubiera ningun ID
+          los comandos quedarian encolados en dataLayer y nunca se enviarian. */}
+      {(GT_ID || GA_ID || GADS_ID) && (
         <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID || GADS_ID}`}
+          src={`https://www.googletagmanager.com/gtag/js?id=${GT_ID || GA_ID || GADS_ID}`}
           strategy="afterInteractive"
         />
       )}
@@ -56,6 +58,7 @@ export default function GoogleAnalytics() {
       <Script id="gtag-config" strategy="afterInteractive">
         {`
           gtag('js', new Date());
+          ${GT_ID ? `gtag('config', '${GT_ID}');` : ""}
           ${GA_ID ? `gtag('config', '${GA_ID}');` : ""}
           ${GADS_ID ? `gtag('config', '${GADS_ID}');` : ""}
         `}
