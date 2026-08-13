@@ -40,6 +40,23 @@ export default function Contacto() {
             }
             setEstado('exito')
             setForm(formVacio)
+
+            // Dispara la etiqueta de conversión de Google Ads tras envío exitoso
+            setTimeout(() => {
+                const gadsId = process.env.NEXT_PUBLIC_GADS_ID
+                const gadsLabel = process.env.NEXT_PUBLIC_GADS_CONVERSION_LABEL
+                if (
+                    typeof window !== 'undefined' &&
+                    window.gtag &&
+                    gadsId &&
+                    gadsLabel
+                ) {
+                    window.gtag('event', 'conversion', {
+                        send_to: gadsId + '/' + gadsLabel,
+                        event_callback: () => {},
+                    })
+                }
+            }, 500)
         } catch {
             setEstado('error')
             setError('Error de conexión. Intenta de nuevo.')
@@ -135,4 +152,3 @@ export default function Contacto() {
         </>
     )
 }
-
