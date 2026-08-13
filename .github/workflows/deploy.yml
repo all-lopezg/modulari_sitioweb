@@ -12,6 +12,13 @@ jobs:
     runs-on: ubuntu-latest
     env:
       INSFORGE_PROJECT_ID: 0a17cd33-48bd-48db-be5b-d40345d5d190
+      # Variables de build-time para Google Analytics/Ads (NEXT_PUBLIC_*).
+      # Se inyectan en el build de CI; si aún no existen en GitHub quedan vacías
+      # y el tracking no se emite (el build no falla). Configurar en
+      # Settings → Secrets and variables → Actions del repositorio.
+      NEXT_PUBLIC_GA_ID: ${{ secrets.NEXT_PUBLIC_GA_ID }}
+      NEXT_PUBLIC_GADS_ID: ${{ secrets.NEXT_PUBLIC_GADS_ID }}
+      NEXT_PUBLIC_GADS_CONVERSION_LABEL: ${{ secrets.NEXT_PUBLIC_GADS_CONVERSION_LABEL }}
     steps:
       - name: Checkout del repositorio
         uses: actions/checkout@v4

@@ -43,9 +43,12 @@ export default function GoogleAnalytics() {
         `}
       </Script>
 
-      {GA_ID && (
+      {/* El script externo gtag.js debe cargarse si hay GA4 O Ads configurado.
+          Si solo existe GADS_ID (sin GA4), se carga igualmente con el ID de Ads;
+          de lo contrario los comandos quedan encolados y nunca se envían. */}
+      {(GA_ID || GADS_ID) && (
         <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID || GADS_ID}`}
           strategy="afterInteractive"
         />
       )}

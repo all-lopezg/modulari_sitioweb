@@ -28,7 +28,7 @@ export const metadata = {
     email: "contacto@modulari.cl",
     telephone: "+56954015773",
   },
-  metadataBase: "https://modulari.cl",
+  metadataBase: new URL("https://modulari.cl"),
   openGraph: {
     title: "Modulari | Muebles modulares para oficinas",
     description:
