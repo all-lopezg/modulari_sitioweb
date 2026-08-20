@@ -75,6 +75,108 @@ const nextConfig = {
         destination: 'https://modulari.ommi.cl/vitrina',
         permanent: true,
       },
+      // Variantes con sufijos de la era Wix (-1, -2, -copia, .html, subpaths)
+      // que Google aún puede tener indexadas.
+      {
+        source: '/galeria-:suffix',
+        destination: '/galeria',
+        permanent: true,
+      },
+      {
+        source: '/galeria.html',
+        destination: '/galeria',
+        permanent: true,
+      },
+      {
+        source: '/galeria/:path+',
+        destination: '/galeria',
+        permanent: true,
+      },
+      {
+        source: '/contacto-:suffix',
+        destination: '/contacto',
+        permanent: true,
+      },
+      {
+        source: '/contacto.html',
+        destination: '/contacto',
+        permanent: true,
+      },
+      {
+        source: '/contacto/:path+',
+        destination: '/contacto',
+        permanent: true,
+      },
+      {
+        source: '/nosotros-:suffix',
+        destination: '/nosotros',
+        permanent: true,
+      },
+      {
+        source: '/nosotros.html',
+        destination: '/nosotros',
+        permanent: true,
+      },
+      {
+        source: '/nosotros/:path+',
+        destination: '/nosotros',
+        permanent: true,
+      },
+      {
+        source: '/inicio-:suffix',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/inicio.html',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/home.html',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/home-:suffix',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/sofas-:suffix',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/catalogo-:suffix',
+        destination: 'https://modulari.ommi.cl/vitrina',
+        permanent: true,
+      },
+      {
+        source: '/comprar-:suffix',
+        destination: 'https://modulari.ommi.cl/vitrina',
+        permanent: true,
+      },
+      {
+        source: '/tienda-:suffix',
+        destination: 'https://modulari.ommi.cl/vitrina',
+        permanent: true,
+      },
+      {
+        source: '/product-page',
+        destination: 'https://modulari.ommi.cl/vitrina',
+        permanent: true,
+      },
+      {
+        source: '/product-page/:path*',
+        destination: 'https://modulari.ommi.cl/vitrina',
+        permanent: true,
+      },
+      {
+        source: '/product-page-:suffix',
+        destination: 'https://modulari.ommi.cl/vitrina',
+        permanent: true,
+      },
     ]
   },
 };
