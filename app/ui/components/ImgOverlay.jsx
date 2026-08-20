@@ -16,23 +16,34 @@ export default function ImageOverlay({ img, isOpen, setIsOpen }) {
         }
     }, [isOpen])
 
+    // Cerrar con la tecla Escape (accesibilidad de teclado).
+    useEffect(() => {
+        if (!isOpen) return
+        const onKey = (e) => {
+            if (e.key === 'Escape') setIsOpen(false)
+        }
+        window.addEventListener('keydown', onKey)
+        return () => window.removeEventListener('keydown', onKey)
+    }, [isOpen, setIsOpen])
+
     return (
         <AnimatePresence>
             {isOpen && (
-                <motion.div className="fixed inset-0 z-100 flex items-center justify-center">
-                    <div className="absolute inset-0 bg-black/70 backdrop-blur-sm p-8">
+                <motion.div className="fixed inset-0 z-100 flex items-center justify-center" role="dialog" aria-modal="true" aria-label="Imagen ampliada">
+                    <div className="absolute inset-0 bg-black/70 backdrop-blur-sm p-8" onClick={() => setIsOpen(false)}>
 
-                        <div className="absolute top-5 lg:top-8 right-5 lg:right-8">
-                            <CgClose
-                                className="cursor-pointer hover:opacity-70 text-white size-10 lg:size-12"
-                                onClick={() => setIsOpen(false)}
-                            />
-                        </div>
+                        <button
+                            className="absolute top-5 lg:top-8 right-5 lg:right-8 cursor-pointer hover:opacity-70 text-white"
+                            onClick={() => setIsOpen(false)}
+                            aria-label="Cerrar imagen"
+                        >
+                            <CgClose className="size-10 lg:size-12" />
+                        </button>
 
-                        <div className="flex items-center justify-center w-full h-full">
+                        <div className="flex items-center justify-center w-full h-full" onClick={(e) => e.stopPropagation()}>
                             <MotionImage
                                 src={img}
-                                alt="modulari"
+                                alt="Imagen ampliada de mobiliario Modulari"
                                 width={0} height={0}
                                 sizes="50vw"
                                 loading="eager"

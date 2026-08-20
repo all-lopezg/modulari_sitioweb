@@ -43,8 +43,6 @@ export const metadata = {
     images: [
       {
         url: "/images/logo.png",
-        width: 1200,
-        height: 630,
         alt: "Logo Modulari",
       },
     ],
@@ -106,7 +104,7 @@ const jsonLd = {
 export default function RootLayout({ children }) {
 
   return (
-    <html className={`${bebas.variable} ${gothic.variable}`}>
+    <html lang="es" className={`${bebas.variable} ${gothic.variable}`}>
       <body className="mt-25 sm:text-lg">
 
         <script

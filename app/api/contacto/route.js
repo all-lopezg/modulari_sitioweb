@@ -7,6 +7,42 @@ const REMITENTE = process.env.RESEND_FROM || 'contacto@modulari.cl'
 
 const LIMITES = { nombre: 100, direccion: 200, email: 200, telefono: 30, asunto: 200, mensaje: 5000 }
 
+// Rate limiting simple en memoria (best-effort por instancia):
+// máx. 5 envíos por IP cada 10 minutos, para que el endpoint público no
+// se use como relay de spam. En serverless el límite no es global entre
+// instancias, pero disuade el abuso más común.
+const RATE_LIMIT_MAX = 5
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000
+const intentos = new Map() // ip -> { count, resetAt }
+
+const ipDelCliente = (request) => {
+    const fwd = request.headers.get('x-forwarded-for') || ''
+    return fwd.split(',')[0].trim()
+        || request.headers.get('cf-connecting-ip')
+        || request.headers.get('x-real-ip')
+        || 'desconocida'
+}
+
+const dentroDeLimite = (ip) => {
+    const ahora = Date.now()
+    const registro = intentos.get(ip)
+    if (!registro || ahora >= registro.resetAt) {
+        intentos.set(ip, { count: 1, resetAt: ahora + RATE_LIMIT_WINDOW_MS })
+        return true
+    }
+    registro.count += 1
+    return registro.count <= RATE_LIMIT_MAX
+}
+
+// Limpieza del Map para que no crezca sin límite (se corre solo cuando se llena).
+const limpiarIntentos = () => {
+    if (intentos.size < 1000) return
+    const ahora = Date.now()
+    for (const [ip, registro] of intentos) {
+        if (ahora >= registro.resetAt) intentos.delete(ip)
+    }
+}
+
 // Escapa el texto del usuario antes de insertarlo en el HTML del correo.
 const escapar = (valor = '') => String(valor)
     .replaceAll('&', '&amp;')
@@ -72,6 +108,13 @@ export async function POST(request) {
         if (!process.env.RESEND_API_KEY) {
             console.error('Falta RESEND_API_KEY en .env.local')
             return Response.json({ success: false, error: 'No se pudo enviar el mensaje. Intenta de nuevo.' }, { status: 500 })
+        }
+
+        // Rate limit por IP antes de validar o enviar nada.
+        limpiarIntentos()
+        const ip = ipDelCliente(request)
+        if (!dentroDeLimite(ip)) {
+            return Response.json({ success: false, error: 'Demasiados intentos. Espera unos minutos y vuelve a intentar.' }, { status: 429 })
         }
 
         const esJSON = (request.headers.get('content-type') || '').includes('application/json')

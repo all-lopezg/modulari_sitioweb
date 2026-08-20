@@ -2,17 +2,31 @@
 import { IoIosArrowBack } from "react-icons/io";
 import { FaWhatsapp } from "react-icons/fa";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function Fabs() {
 
+    // El botón "volver arriba" solo aparece al hacer scroll hacia abajo.
+    const [mostrarArriba, setMostrarArriba] = useState(false)
+
+    useEffect(() => {
+        const onScroll = () => setMostrarArriba(window.scrollY > 300)
+        onScroll()
+        window.addEventListener('scroll', onScroll, { passive: true })
+        return () => window.removeEventListener('scroll', onScroll)
+    }, [])
+
     return (
         <>
-            <button
-                className="fixed bottom-6 right-6 z-50 h-14 w-14 rounded-full bg-celeste text-white text-[0.7rem] font-semibold uppercase shadow-lg flex items-center justify-center transition hover:bg-celeste/80 cursor-pointer"
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            >
-                <IoIosArrowBack className="size-10 rotate-90" />
-            </button>
+            {mostrarArriba && (
+                <button
+                    className="fixed bottom-6 right-6 z-50 h-14 w-14 rounded-full bg-celeste text-white text-[0.7rem] font-semibold uppercase shadow-lg flex items-center justify-center transition hover:bg-celeste/80 cursor-pointer"
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                    aria-label="Volver arriba"
+                >
+                    <IoIosArrowBack className="size-10 rotate-90" />
+                </button>
+            )}
 
             <Link
                 href={"https://wa.me/56954015773?text=Hola%20Modulari%2C%20me%20gustaría%20tener%20más%20información"}

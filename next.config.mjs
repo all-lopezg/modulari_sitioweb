@@ -6,19 +6,7 @@ const nextConfig = {
   ],
   async redirects() {
     return [
-      // Redirección desde URLs del antiguo sitio Wix (si existen)
-      // Reemplaza "modulari" y "wixsite" por la URL real que usaba Wix
-      {
-        source: '/(www.)?modulari.wixsite.com/:path*',
-        destination: 'https://modulari.cl/:path*?query*',
-        permanent: true,
-      },
-      {
-        source: '/(www.)?wix.com/_partials/:path*',
-        destination: 'https://modulari.cl/?query*',
-        permanent: true,
-      },
-      // Redirige URLs comunes de Wix a la nueva estructura
+      // Redirige URLs comunes del antiguo sitio Wix a la nueva estructura
       {
         source: '/home',
         destination: '/',
@@ -27,6 +15,64 @@ const nextConfig = {
       {
         source: '/inicio',
         destination: '/',
+        permanent: true,
+      },
+      // Rutas legacy que Google aún puede tener indexadas (todas 404 hoy).
+      // Las de catálogo/compras apuntan a la vitrina real de cotizaciones;
+      // el resto al inicio del sitio.
+      {
+        source: '/sofas',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/sofas/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/catalogo',
+        destination: 'https://modulari.ommi.cl/vitrina',
+        permanent: true,
+      },
+      {
+        source: '/catalogo/:path*',
+        destination: 'https://modulari.ommi.cl/vitrina',
+        permanent: true,
+      },
+      {
+        source: '/vitrina',
+        destination: 'https://modulari.ommi.cl/vitrina',
+        permanent: true,
+      },
+      {
+        source: '/vitrina-virtual',
+        destination: 'https://modulari.ommi.cl/vitrina',
+        permanent: true,
+      },
+      {
+        source: '/tienda',
+        destination: 'https://modulari.ommi.cl/vitrina',
+        permanent: true,
+      },
+      {
+        source: '/comprar',
+        destination: 'https://modulari.ommi.cl/vitrina',
+        permanent: true,
+      },
+      {
+        source: '/productos',
+        destination: 'https://modulari.ommi.cl/vitrina',
+        permanent: true,
+      },
+      {
+        source: '/cotiza',
+        destination: 'https://modulari.ommi.cl/vitrina',
+        permanent: true,
+      },
+      {
+        source: '/cotizar',
+        destination: 'https://modulari.ommi.cl/vitrina',
         permanent: true,
       },
     ]

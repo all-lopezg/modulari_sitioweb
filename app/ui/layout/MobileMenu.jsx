@@ -44,10 +44,10 @@ export default function MobileMenu({ isOpen, setIsOpen }) {
 
                     {/* Redes sociales */}
                     <div className="flex justify-center gap-6 pb-10">
-                        <Link href={'https://instagram.com/modulari.cl'}>
+                        <Link href={'https://www.instagram.com/modulari.cl/'} target="_blank" rel="noopener noreferrer">
                             <FaInstagram className="text-white size-10" />
                         </Link>
-                        <Link href={'https://wa.me/56954015773'}>
+                        <Link href={'https://wa.me/56954015773'} target="_blank" rel="noopener noreferrer">
                             <FaWhatsapp className="text-white size-10" />
                         </Link>
                         <Link href={'mailto:contacto@modulari.cl'}>
