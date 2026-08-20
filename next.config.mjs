@@ -22,12 +22,12 @@ const nextConfig = {
       // el resto al inicio del sitio.
       {
         source: '/sofas',
-        destination: '/',
+        destination: 'https://modulari.ommi.cl/vitrina',
         permanent: true,
       },
       {
         source: '/sofas/:path*',
-        destination: '/',
+        destination: 'https://modulari.ommi.cl/vitrina',
         permanent: true,
       },
       {
@@ -144,7 +144,7 @@ const nextConfig = {
       },
       {
         source: '/sofas-:suffix',
-        destination: '/',
+        destination: 'https://modulari.ommi.cl/vitrina',
         permanent: true,
       },
       {
