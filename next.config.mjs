@@ -4,14 +4,6 @@ const nextConfig = {
     'sly-slit-election.ngrok-free.dev',
     '192.168.1.123'
   ],
-  experimental: {
-    // Los redirects de next.config.mjs matchean case-insensitive por defecto
-    // (path-to-regexp con sensitive: false). Sin este flag, una regla /GALERIA
-    // también matchearía /galeria (la página real) y entraría en loop infinito.
-    // Con caseSensitiveRoutes: true cada variante de mayúsculas requiere su
-    // regla explícita (sección "Normalización de mayúsculas/acentos" abajo).
-    caseSensitiveRoutes: true,
-  },
   async redirects() {
     return [
       // Redirige URLs comunes del antiguo sitio Wix a la nueva estructura
@@ -197,8 +189,16 @@ const nextConfig = {
       //   tal como llega en la request line, por eso los acentos se
       //   escriben codificados: /cat%C3%A1logo (no /catálogo).
       // - permanent: true => 308.
-      // - Con experimental.caseSensitiveRoutes: true (arriba) cada
-      //   variante de mayúsculas necesita su regla explícita.
+      // - La plataforma (InsForge/Vercel) matchea los sources
+      //   case-insensitive e ignora experimental.caseSensitiveRoutes
+      //   (verificado en producción: /galeria entraba en loop con la
+      //   regla /GALERIA). Por eso las variantes exactas de mayúsculas
+      //   de páginas reales NO tienen regla aquí y las normaliza el
+      //   catch-all app/[...slug]/page.jsx (runtime Node.js, no edge
+      //   function). Las reglas de mayúsculas que
+      //   quedan abajo son redundantes con sus equivalentes lowercase
+      //   (la plataforma las matchea igual) y sus destinos son
+      //   canónicos o externos, sin loops.
       // ============================================================
 
       // --- Acentos (forma codificada) ---
@@ -237,36 +237,11 @@ const nextConfig = {
       },
 
       // --- Mayúsculas: páginas principales (ALL-CAPS y Title-case) ---
-      {
-        source: '/GALERIA',
-        destination: '/galeria',
-        permanent: true,
-      },
-      {
-        source: '/Galeria',
-        destination: '/galeria',
-        permanent: true,
-      },
-      {
-        source: '/CONTACTO',
-        destination: '/contacto',
-        permanent: true,
-      },
-      {
-        source: '/Contacto',
-        destination: '/contacto',
-        permanent: true,
-      },
-      {
-        source: '/NOSOTROS',
-        destination: '/nosotros',
-        permanent: true,
-      },
-      {
-        source: '/Nosotros',
-        destination: '/nosotros',
-        permanent: true,
-      },
+      // NOTA: las variantes exactas de mayúsculas de páginas reales
+      // (/GALERIA, /Galeria, /CONTACTO, /Contacto, /NOSOTROS, /Nosotros)
+      // NO tienen regla aquí: la plataforma matchea case-insensitive y
+      // una regla /GALERIA → /galeria también matchearía /galeria (loop).
+      // Las normaliza el catch-all app/[...slug]/page.jsx.
       {
         source: '/INICIO',
         destination: '/',
