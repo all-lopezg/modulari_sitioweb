@@ -1,7 +1,7 @@
 "use client"
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IoCheckmarkCircle } from "react-icons/io5";
 
 const formVacio = { nombre: '', direccion: '', email: '', telefono: '', asunto: '', mensaje: '' }
@@ -15,6 +15,11 @@ export default function Contacto() {
     const [enviando, setEnviando] = useState(false)
     const [estado, setEstado] = useState(null) // 'exito' | 'error' | null
     const [error, setError] = useState('')
+    const montaje = useRef(0)
+
+    useEffect(() => {
+        montaje.current = Date.now()
+    }, [])
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.id]: e.target.value })
@@ -30,7 +35,7 @@ export default function Contacto() {
             const res = await fetch(API_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(form),
+                body: JSON.stringify({ ...form, tiempo_formulario: Date.now() - montaje.current }),
             })
             const data = await res.json().catch(() => ({}))
             if (!res.ok || !data?.success) {
@@ -91,6 +96,13 @@ export default function Contacto() {
                 <p className="text-gray-500 text-lg lg:text-[1.3rem] my-3 leading-7">Si tienes alguna duda o consulta para tu evento, no dudes en escribirnos. ¡Felices de ayudarte!</p>
 
                 <form onSubmit={handleSubmit} action={API_URL} method="POST" className="w-full mt-5 text-lg lg:text-[1.2rem] flex flex-col gap-y-3">
+
+                    {/* Campo trampa anti-bot: fuera de pantalla para personas.
+                        Si llega lleno al servidor, el envío se descarta en silencio. */}
+                    <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', top: '-9999px' }}>
+                        <label htmlFor="website">No completes este campo</label>
+                        <input type="text" id="website" name="website" tabIndex={-1} autoComplete="off" />
+                    </div>
 
                     <div className="flex flex-col gap-y-3 lg:flex-row lg:gap-x-3">
                         <input type="text" id="nombre" name="nombre" placeholder="Nombre" required value={form.nombre} onChange={handleChange} className="bg-[#F3F3F3] w-full p-2 rounded-md" />
