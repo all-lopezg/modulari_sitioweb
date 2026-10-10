@@ -1,0 +1,22 @@
+# Keep-alive del proyecto InsForge (plan Free): un proyecto se pausa tras
+# 7 días sin ninguna petición; cualquier petición reinicia el contador y
+# avisan por correo antes de pausar. El sitio público se sirve desde Vercel,
+# así que las visitas web no cuentan como actividad del proyecto: este ping
+# diario mantiene el contador de inactividad en cero. Si el ping falla,
+# GitHub notifica por correo (señal temprana de que algo pasa).
+name: Keep-alive InsForge
+
+on:
+  schedule:
+    # 12:17 UTC = 09:17 en Chile (horario de verano, UTC-3)
+    - cron: '17 12 * * *'
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping a Modulari_sitioweb
+        run: |
+          curl -fsS -m 30 --retry 3 --retry-delay 10 https://jg76637q.us-east.insforge.app/health
+          curl -fsS -m 30 --retry 3 --retry-delay 10 https://jg76637q.us-east.insforge.app/api/health
