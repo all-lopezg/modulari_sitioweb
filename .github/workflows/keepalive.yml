@@ -1,9 +1,9 @@
-# Keep-alive del proyecto InsForge (plan Free): un proyecto se pausa tras
-# 7 días sin ninguna petición; cualquier petición reinicia el contador y
-# avisan por correo antes de pausar. El sitio público se sirve desde Vercel,
-# así que las visitas web no cuentan como actividad del proyecto: este ping
-# diario mantiene el contador de inactividad en cero. Si el ping falla,
-# GitHub notifica por correo (señal temprana de que algo pasa).
+# Keep-alive del proyecto InsForge (plan Free). Un proyecto Free se pausa
+# tras 7 días sin actividad real: los health checks (/health, /api/health)
+# NO reinician el contador (verificado 2026-10-17: la plataforma sondea
+# /stats cada hora y aun así pausa), mientras que la actividad autenticada
+# sí lo reinicia. Por eso este workflow hace a diario una consulta
+# autenticada al proyecto. Si falla, GitHub notifica por correo.
 name: Keep-alive InsForge
 
 on:
@@ -15,8 +15,13 @@ on:
 jobs:
   ping:
     runs-on: ubuntu-latest
+    env:
+      INSFORGE_PROJECT_ID: 0a17cd33-48bd-48db-be5b-d40345d5d190
     steps:
-      - name: Ping a Modulari_sitioweb
+      - name: Consulta autenticada a Modulari_sitioweb
+        env:
+          INSFORGE_USER_API_KEY: ${{ secrets.INSFORGE_USER_API_KEY }}
         run: |
-          curl -fsS -m 30 --retry 3 --retry-delay 10 https://jg76637q.us-east.insforge.app/health
-          curl -fsS -m 30 --retry 3 --retry-delay 10 https://jg76637q.us-east.insforge.app/api/health
+          npx -y @insforge/cli login --user-api-key "$INSFORGE_USER_API_KEY" --json > /dev/null
+          npx -y @insforge/cli link --project-id "$INSFORGE_PROJECT_ID" -y
+          npx -y @insforge/cli db query "SELECT 1 AS keepalive" --json
